@@ -6,15 +6,14 @@ public class ArrayDeque<T> {
     private static int refactor = 2;
     private static double usageFactor = 0.25;
 
-    public int minusOne(int index) {
+    private int minusOne(int index) {
         if (index - 1 < 0) {
-            return items.length + index - 1;
-        } else {
-            return index;
+            return items.length - index - 1;
         }
+        return calcIndex(index - 1);
     }
 
-    public int calcIndex(int index) {
+    private int calcIndex(int index) {
         return index % items.length;
     }
 
@@ -29,8 +28,8 @@ public class ArrayDeque<T> {
         if (size == items.length) {
             resize(size * refactor);
         }
-        items[front] = item;
         front = minusOne(front);
+        items[front] = item;
         size += 1;
     }
 
@@ -38,7 +37,7 @@ public class ArrayDeque<T> {
         if (size == items.length) {
             resize(size * refactor);
         }
-        items[calcIndex(front+size)] = item;
+        items[calcIndex(front + size)] = item;
         size += 1;
     }
 
@@ -58,8 +57,12 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if (size / items.length < usageFactor) {
+        if (size / items.length < usageFactor
+            && size > 16) {
             resize(items.length / 2);
+        }
+        if (size == 0) {
+            return null;
         }
         T firstItem = items[front];
         front = calcIndex(front + 1);
@@ -68,10 +71,14 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
-        if (size / items.length < usageFactor) {
+        if (size / items.length < usageFactor
+            && size > 16) {
             resize(items.length / 2);
         }
-        T lastItem = items[calcIndex(front + size)];
+        if (size == 0) {
+            return null;
+        }
+        T lastItem = items[calcIndex(front + size - 1)];
         size -= 1;
         return lastItem;
     }
@@ -84,12 +91,12 @@ public class ArrayDeque<T> {
         }
     }
 
-    public void resize(int newLength) {
+    private void resize(int newLength) {
         T[] newItems = (T[]) new Object[newLength];
 
         int i;
-        for (i = 0; i < size; i++) {
-            newItems[i] = items[calcIndex(front+i)];
+        for (i = 0; i < size; i += 1) {
+            newItems[i] = items[calcIndex(front + i)];
         }
         items = newItems;
         front = 0;

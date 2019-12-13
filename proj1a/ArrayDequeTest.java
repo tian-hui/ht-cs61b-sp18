@@ -83,9 +83,20 @@ public class ArrayDequeTest {
 
     }
 
+    public static void mytest() {
+        System.out.println("running my own test");
+
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+        ad1.addLast(0);
+        int a = ad1.removeLast();
+        System.out.println(a);
+        ad1.printDeque();
+    }
+
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
         addIsEmptySizeTest();
         addRemoveTest();
+        mytest();
     }
 } 
