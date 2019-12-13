@@ -87,10 +87,11 @@ public class LinkedListDequeTest {
 		System.out.println("running my own test");
 		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
 		lld1.isEmpty();
-		lld1.addLast(2);
-		int a = lld1.removeFirst() ;
-		lld1.addLast(4);
-		int b = lld1.removeFirst();
+		lld1.addFirst(2);
+		lld1.addFirst(3);
+		int a = lld1.removeLast() ;
+		lld1.addFirst(4);
+		int b = lld1.removeLast();
 		System.out.println(a + " " + b);
 	}
 

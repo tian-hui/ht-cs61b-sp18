@@ -88,9 +88,11 @@ public class ArrayDequeTest {
 
         ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
         ad1.addLast(0);
-        int a = ad1.removeLast();
-        System.out.println(a);
-        ad1.printDeque();
+        ad1.removeFirst();
+        ad1.addFirst(2);
+        ad1.removeLast();
+        ad1.addFirst(4);
+        int a = ad1.get(0);
     }
 
     public static void main(String[] args) {
