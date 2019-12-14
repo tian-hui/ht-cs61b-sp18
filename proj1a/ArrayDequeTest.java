@@ -87,12 +87,15 @@ public class ArrayDequeTest {
         System.out.println("running my own test");
 
         ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
-        ad1.addLast(0);
-        ad1.removeFirst();
-        ad1.addFirst(2);
-        ad1.removeLast();
-        ad1.addFirst(4);
-        int a = ad1.get(0);
+        int i;
+        for (i = 0; i < 20; i += 1) {
+            ad1.addFirst(i);
+        }
+
+        for (i=0; i < 19; i += 1) {
+            ad1.removeLast();
+        }
+        ad1.printDeque();
     }
 
     public static void main(String[] args) {

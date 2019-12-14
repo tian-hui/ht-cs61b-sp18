@@ -86,13 +86,13 @@ public class LinkedListDequeTest {
 	public static void mytest() {
 		System.out.println("running my own test");
 		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
-		lld1.isEmpty();
-		lld1.addFirst(2);
-		lld1.addFirst(3);
-		int a = lld1.removeLast() ;
-		lld1.addFirst(4);
-		int b = lld1.removeLast();
-		System.out.println(a + " " + b);
+		int i;
+		for (i = 0; i < 5; i += 1) {
+			lld1.addLast(i);
+		}
+
+		int a = lld1.getRecursive(3);
+		lld1.printDeque();
 	}
 
 	public static void main(String[] args) {

@@ -1,8 +1,8 @@
 public class LinkedListDeque<T> {
     private class Node {
-        public T item;
-        public Node prev;
-        public Node next;
+        private T item;
+        private Node prev;
+        private Node next;
 
         public Node(T i, Node p, Node n) {
             item = i;
@@ -81,8 +81,9 @@ public class LinkedListDeque<T> {
         } else if (index == 0) {
             return sentinel.next.item;
         } else {
-            this.removeFirst();
-            return this.getRecursive(index - 1);
+            LinkedListDeque<T> newList = copyList();
+            newList.removeFirst();
+            return newList.getRecursive(index - 1);
         }
     }
 
@@ -98,4 +99,15 @@ public class LinkedListDeque<T> {
             return ptr.item;
         }
     }
+
+    public LinkedListDeque<T> copyList() {
+        LinkedListDeque<T> newList = new LinkedListDeque<T>();
+        Node ptr = sentinel.next;
+        while (ptr != sentinel) {
+            newList.addLast(ptr.item);
+            ptr = ptr.next;
+        }
+        return newList;
+    }
 }
+
