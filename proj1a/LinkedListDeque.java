@@ -100,7 +100,7 @@ public class LinkedListDeque<T> {
         }
     }
 
-    public LinkedListDeque<T> copyList() {
+    private LinkedListDeque<T> copyList() {
         LinkedListDeque<T> newList = new LinkedListDeque<T>();
         Node ptr = sentinel.next;
         while (ptr != sentinel) {
