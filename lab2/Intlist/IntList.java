@@ -119,6 +119,12 @@ public class IntList {
         return expanded;
     }
 
+    public void addfirst(int x) {
+        IntList newnode = new IntList(this.first, this.rest);
+        this.first = x;
+        this.rest = newnode;
+    }
+
 
 
 

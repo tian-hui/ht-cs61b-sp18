@@ -66,4 +66,11 @@ public class IntListTest {
         assertEquals(IntList.of(1, 2, 3), A);
     }
 
+    @Test
+    public void testAddfirst() {
+        IntList A = IntList.of(1, 2, 3);
+        A.addfirst(8);
+        assertEquals(A, IntList.of(8, 1, 2, 3));
+    }
+
 }
