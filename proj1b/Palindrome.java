@@ -11,7 +11,7 @@ public class Palindrome {
         return isPalindromeHelper(wordToDeque(word));
     }
 
-    public boolean isPalindromeHelper(Deque<Character> p) {
+    private boolean isPalindromeHelper(Deque<Character> p) {
         if (p.size() <= 1) {
             return true;
         }
@@ -23,11 +23,10 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
-        CharacterComparator offByOne = new OffByOne();
-        return isPalindromeHelper(wordToDeque(word), offByOne);
+        return isPalindromeHelper(wordToDeque(word), cc);
     }
 
-    public boolean isPalindromeHelper(Deque<Character> p,
+    private boolean isPalindromeHelper(Deque<Character> p,
                                       CharacterComparator cc) {
         if (p.size() <= 1) {
             return true;
